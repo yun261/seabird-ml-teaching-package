@@ -41,7 +41,7 @@
 
 记录窗口数、加速度行数、个体与类别数量、来源目录、匹配规则和是否包含合成数据。
 
-四个文件通过 `sample_id` 关联，采用 `animal_id + 窗口末端 unixtime` 对齐。现有便携可视化 Web 不需要这四个文件，它们用于后续选择同一窗口并展示曲线、特征和模型结果。
+四个文件通过 `sample_id` 关联，采用 `animal_id + 窗口末端 unixtime` 对齐。
 
 ## 4. code/src：核心 Python 代码
 
@@ -67,7 +67,7 @@
 - `9run_tree_model_training_and_test.ipynb`：树模型训练与测试。
 - `simple_behavior_visualization.ipynb`：行为分布可视化。
 
-这些 Notebook 默认使用原项目路径，不会自动读取 `teaching_samples`。
+这些 Notebook 默认使用原项目路径，不会自动读取 `teaching_samples`，需要手动进行修改。
 
 ## 6. code 下的数据整理脚本
 
@@ -75,19 +75,19 @@
 - `build_teaching_samples.py`：早期 60 窗口版本的构建记录，当前完整数据不由它提供。
 - `build_visualization_inputs.py`：生成小型可视化输入的辅助脚本。
 
-日常课堂使用不需要运行这些脚本。
+日常使用不需要运行这些脚本。
 
 ## 7. configs：实验配置
 
-包括深度学习、树模型、CNN-AE、数据集、25/78/119 特征集合、模型结构和路径配置。这些是原项目配置副本。教学页面不应让学生修改学习率、epoch、batch size、CUDA 等训练参数。
+包括深度学习、树模型、CNN-AE、数据集、25/78/119 特征集合、模型结构和路径配置。这些是原项目配置副本。可以修改学习率、epoch、batch size、CUDA 等训练参数。
 
 ## 8. models/xgboost：已有 XGBoost 模型
 
-包含 `OM1901.pickle`、`OM2211.pickle`、`OM2214.pickle` 三个 LOIO 个体模型。模型为原样复制，没有重新训练。推理时应使用与样本 `animal_id` 同名的模型。
+包含 `OM1901.pickle`、`OM2211.pickle`、`OM2214.pickle` 三个 LOIO 个体模型。
 
 ## 9. models/dcl_sa：已有 DCL-SA 模型
 
-包含 OM1901、OM2211、OM2214 三组 `best_model_weights.pt` 和 `config.yaml`。权重与配置为原样复制，没有重新训练。
+包含 OM1901、OM2211、OM2214 三组 `best_model_weights.pt` 和 `config.yaml`。
 
 ## 10. results/xgboost：XGBoost 真实实验结果
 
@@ -105,19 +105,9 @@
 
 现有可视化 Web 或行为分布 Notebook使用：`data/visualization_inputs/omizunagidori/*.csv`。
 
-后续教学型机器学习 Web 使用：
-
-- `data/teaching_samples/samples_metadata.csv`
-- `data/teaching_samples/samples_acceleration.csv`
-- `data/teaching_samples/samples_features_119.csv`
-- `data/teaching_samples/manifest.json`
-- `models/`
-- `results/`
-
 ## 14. 注意事项
 
-- `visualization_inputs` 服务现有可视化；`teaching_samples` 服务教学型机器学习交互，两者不要混用。
-- 不要在课堂页面重新训练模型。
+- 不用重新训练模型。
 - 不要让 Web 每次读取原项目完整 23 GB 数据。
 - 全局特征重要性不等于单一样本的因果解释。
 - 原始 Notebook、源码和模型均保持原来的运行方式。
