@@ -3,13 +3,11 @@
 如果你只想运行教学程序，无需配置 Python 环境：
 
 1. 进入 Releases
-2. 下载最新版本的便携包
+2. 下载最新版本的便携包 或者点击  https://github.com/yun261/seabird-ml-teaching-package/releases/download/v1.0.0/seabird_visualization_portable_windows.zip  直接下载
 3. 解压 ZIP（内有详细步骤）
 4. 双击 run_app.bat
 5. 浏览器会自动打开教学页面
 
-或者
-点击  https://github.com/yun261/seabird-ml-teaching-package/releases/download/v1.0.0/seabird_visualization_portable_windows.zip  直接下载
 
 
 # 海鸟行为识别教学材料包说明
