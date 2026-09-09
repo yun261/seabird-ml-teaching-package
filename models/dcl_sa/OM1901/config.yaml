@@ -1,0 +1,203 @@
+path:
+  nas:
+    rootdir: ./
+  dataset:
+    rootdir: ${path.nas.rootdir}/data/datasets/
+    npz_format_data_dir:
+      labelled_data: ${..rootdir}/npz_format/labelled/
+      unlabelled_data: ${..rootdir}/npz_format/shuffled_20_v2/
+  log:
+    rootdir: ${path.nas.rootdir}/data/model-output/${sub_root_dir}/
+    logfile:
+      csv: log_training.csv
+    checkpoints:
+      dir: checkpoints_dir
+      fname: best_model_weights.pt
+issue: I03
+ex: ex-d00
+debug: false
+seed: 0
+k8s: false
+metadata:
+  approach: dl
+  task: loiocv
+train:
+  cuda: 0
+  train_val_split: true
+  train_data_ratio: 0.8
+  shuffle: true
+  train_balanced: true
+  data_augmentation: true
+  manifold_mixup: false
+  mixup_alpha: 0.2
+  mixup_targets_argmax: false
+  batch_size: 128
+  n_epoch: 100
+  min_epoch: 70
+  patience: 10
+  optimizer: Adam
+  lr: 0.001
+  weight_decay: 0.0001
+  scheduler: CosineLR
+  criterion: CE
+sub0: ${issue}/${ex}
+sub1: ${dataset.species}-${dataset.window_size}
+sub2: ${model.model_name}
+sub3: ''
+sub4: seed${seed}
+sub5: ${dataset.test_animal_id}
+sub_root_dir: ${sub0}/${sub1}/${sub2}/${sub3}/${sub4}/${sub5}
+dataset:
+  species: om
+  n_classes: 6
+  window_size: 50
+  in_ch: 3
+  test_animal_id: OM1901
+  da_type: random
+  da_param1: None
+  da_param2: None
+  un_sup_pretraining:
+    animal_id_list:
+      train:
+      - OM1802
+      - OM1803
+      - OM1804
+      - OM1805
+      - OM1806
+      - OM1807
+      - OM1808
+      - OM1809
+      - OM1810
+      - OM1811
+      - OM1901
+      - OM2001
+      - OM2002
+      - OM2003
+      - OM2005
+      - OM2006
+      - OM2101
+      - OM2102
+      - OM2103
+      - OM2201
+      - OM2202
+      - OM2203
+      - OM2204
+      - OM2205
+      - OM2206
+      - OM2207
+      - OM2208
+      - OM2209
+      - OM2210
+      - OM2211
+      - OM2212
+      - OM2213
+      - OM2214
+      val:
+      - null
+      test:
+      - DUMMY
+  labelled:
+    animal_id_list:
+      all:
+      - OM1803
+      - OM1804
+      - OM1805
+      - OM1806
+      - OM1807
+      - OM1808
+      - OM1809
+      - OM1901
+      - OM2001
+      - OM2002
+      - OM2003
+      - OM2005
+      - OM2006
+      - OM2101
+      - OM2102
+      - OM2103
+      - OM2201
+      - OM2202
+      - OM2203
+      - OM2204
+      - OM2205
+      - OM2207
+      - OM2208
+      - OM2210
+      - OM2211
+      - OM2212
+      - OM2213
+      - OM2214
+      train:
+      - OM1803
+      - OM1804
+      - OM1805
+      - OM1806
+      - OM1807
+      - OM1808
+      - OM1809
+      - OM2001
+      - OM2002
+      - OM2003
+      - OM2005
+      - OM2006
+      - OM2101
+      - OM2102
+      - OM2103
+      - OM2201
+      - OM2202
+      - OM2203
+      - OM2204
+      - OM2205
+      - OM2207
+      - OM2208
+      - OM2210
+      - OM2211
+      - OM2212
+      - OM2213
+      - OM2214
+      val:
+      - DUMMY
+      test:
+      - OM1901
+    test_animal_id_list_list:
+    - - OM1803
+    - - OM1804
+    - - OM1805
+    - - OM1806
+    - - OM1807
+    - - OM1808
+    - - OM1809
+    - - OM1901
+    - - OM2001
+    - - OM2002
+    - - OM2003
+    - - OM2005
+    - - OM2006
+    - - OM2101
+    - - OM2102
+    - - OM2103
+    - - OM2201
+    - - OM2202
+    - - OM2203
+    - - OM2204
+    - - OM2205
+    - - OM2207
+    - - OM2208
+    - - OM2210
+    - - OM2211
+    - - OM2212
+    - - OM2213
+    - - OM2214
+model:
+  model_name: dcl-sa
+  kernel_size: 5
+  num_conv_layers: 4
+  num_conv_filters: 128
+  dropout_after_conv: false
+  num_lstm_hidden_units: 128
+  num_lstm_layers: 1
+  bidirectional_lstm: false
+  num_attn_heads: 4
+  num_attn_layers: 1
+  out_layer_type: flatten-linear-2
+  out_dropout_rate: 0.0

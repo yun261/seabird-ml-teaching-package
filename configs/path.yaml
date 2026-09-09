@@ -1,0 +1,20 @@
+path:
+  nas:
+    # Resolves to the directory where the script was launched (project root),
+    # so paths stay correct even when hydra.job.chdir=true.
+    rootdir: ${hydra:runtime.cwd}
+  dataset:
+    rootdir: "${path.nas.rootdir}/data/datasets/"
+    npz_format_data_dir:
+      labelled_data: "${..rootdir}/npz_format/labelled/"
+      unlabelled_data: "${..rootdir}/npz_format/shuffled_20_v2/"
+  log:
+    rootdir: "${path.nas.rootdir}/data/model-output/${sub_root_dir}/"
+    logfile:
+      csv: log_training.csv
+    checkpoints:
+      dir: checkpoints_dir
+      fname: best_model_weights.pt
+    # pretrained:
+    #   dir: "${path.nas.rootdir}/data/model-output/${issue}/${pretrained_model_dir}/checkpoints_dir/"
+    #   fname: best_model_weights.pt

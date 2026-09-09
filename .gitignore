@@ -1,0 +1,54 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Streamlit secrets
+.streamlit/secrets.toml
+
+# Temporary files
+*.tmp
+*.log
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Outputs
+outputs/
+logs/
+
+# Large model files
+*.pt
+*.pth
+*.ckpt
+
+# Large data files
+*.npz
+*.npy
+
+# Archives
+*.zip
+*.rar
+*.7z
+
+# Large datasets distributed through GitHub Releases
+data/visualization_inputs/
+data/teaching_samples/samples_acceleration.csv
+data/teaching_samples/samples_features_119.csv
+
+# Portable packages
+*.zip
