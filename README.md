@@ -9,7 +9,7 @@
 5. 浏览器会自动打开教学页面
 
 或者
-点击https://github.com/yun261/seabird-ml-teaching-package/releases/download/v1.0.0/seabird_visualization_portable_windows.zip直接下载
+点击  https://github.com/yun261/seabird-ml-teaching-package/releases/download/v1.0.0/seabird_visualization_portable_windows.zip  直接下载
 
 
 # 海鸟行为识别教学材料包说明
